@@ -1,0 +1,37 @@
+<template>
+        
+    <template if:true={showSpinner}>
+        <lightning-layout class="slds-m-top_medium slds-m-bottom_small">
+            <lightning-spinner alternative-text="Loading"></lightning-spinner>
+        </lightning-layout>
+    </template>
+
+    <template if:true={showError}> <!--show if any error-->
+        <lightning-layout class="slds-m-top_medium slds-m-bottom_small">
+            <lightning-layout-item size="12" padding="horizontal-small">
+                <div class="slds-text-color_error">{error}</div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </template>
+
+    <lightning-card title="Covid19 - Live Tracker using LWC and covid19api.com API" icon-name="standard:announcement">
+        <lightning-layout-item size="12"  class="slds-float_left">
+                <lightning-layout multiple-rows="true" class="slds-card_boundary">
+
+                    <lightning-datatable
+                        key-field="id"
+                        data={data}
+                        columns={columns}
+                        sorted-by={sortBy}
+                        sorted-direction={sortDirection}
+                        onsort={handleSortdata}
+                        onrowselection={getSelectedQuoteName}
+                        onpolicyquoterow={getSelectedPolicyQuote}
+                        hide-checkbox-column=true>
+                    </lightning-datatable>
+                        
+                </lightning-layout>
+        </lightning-layout-item>
+    </lightning-card> 
+
+</template>
